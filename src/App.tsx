@@ -14,7 +14,9 @@ export default class App extends Component {
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Home />} />
-                        <Route path="*" element={<NoPage/>} />
+                        <Route path="book/" element={<NoPage placeholder='book'/>} />
+                        <Route path="bookings/" element={<NoPage placeholder='bookings'/>} />
+                        <Route path="profile/" element={<NoPage placeholder='profile'/>} />
                     </Route>
                 </Routes>
             </BrowserRouter>

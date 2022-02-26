@@ -1,4 +1,12 @@
+@import './assets/variables.css';
+
 #root {
-    background-color: var(--ligth-main);
+    background-color: var(--bg-color);
     min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+#content {
+    width: 100%;
 }

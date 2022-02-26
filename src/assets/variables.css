@@ -1,4 +1,5 @@
-element {
-    --main-color: #a87132;
+html {
+    --main-color: #ad875b;
     --ligth-main: #a78e72;
+    --bg-color: #ffffff;
 }

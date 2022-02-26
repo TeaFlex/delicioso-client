@@ -1,10 +1,13 @@
 import { Component, ReactNode } from "react";
-import { Outlet } from "react-router-dom";
 
-export default class NoPage extends Component {
+interface NoPageProps {
+    placeholder?: string;
+}
+
+export default class NoPage extends Component<NoPageProps> {
     render(): ReactNode {
         return (
-            <div>NoPage</div>
+            <div>{this.props.placeholder ?? "NoPage"}</div>
         )
     }
 }

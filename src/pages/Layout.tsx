@@ -7,7 +7,9 @@ export default class Layout extends Component {
         return (
             <>
                 <Navbar />
-                <Outlet />
+                <div id="content">
+                    <Outlet />
+                </div>
             </>
         )
     }
