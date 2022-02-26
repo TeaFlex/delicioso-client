@@ -1,0 +1,11 @@
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--main-color);
+}
+
+#navbar a {
+    text-decoration: none;
+    color: black;
+}
