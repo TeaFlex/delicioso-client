@@ -1,10 +1,11 @@
 html {
     --main-color: #f91657;
     --second-color: #00002b;
-    --light-main: #f86e95;
+    --light-main: #fd8dac;
     --light-second: #61618d;
     --bright-main: white;
     --main-text: var(--second-color);
-    --hover-text: var(--bright-main);
+    --hover-text: var(--light-main);
+    --active-text: var(--bright-main);
     --bg-color: var(--second-color);
 }
