@@ -1,5 +1,6 @@
 import { Component, ReactNode } from "react";
 import { Outlet } from "react-router-dom";
+import Content from "../components/content/Content";
 import Navbar from "../components/navbar/Navbar";
 
 export default class Layout extends Component {
@@ -7,9 +8,9 @@ export default class Layout extends Component {
         return (
             <>
                 <Navbar />
-                <div id="content">
+                <Content>
                     <Outlet />
-                </div>
+                </Content>
             </>
         )
     }

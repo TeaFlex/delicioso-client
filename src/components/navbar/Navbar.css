@@ -1,13 +1,68 @@
 #navbar {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    animation-name: slide-up;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+#navbar > nav {
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     background-color: var(--main-color);
+    border-radius: 5px;
+    width: 90%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    box-shadow: 0 0 7px black;
 }
 
 #navbar a {
     text-decoration: none;
     color: black;
     padding: 1em;
+    border-radius: 5px;
+}
+
+#navbar a:hover {
+    color: var(--hover-text);
+    transition: color 0.5s;
+}
+
+#navbar a > .textLink {
+    display: none;
+}
+
+#navbar .icon {
+    text-align: center;
+    display: inline;
+    height: 1.5em;
+    margin-right: 0;
+    vertical-align: middle;
+}
+
+@media (min-width: 640px) {
+
+    #navbar {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        animation-name: slide-down;
+    }
+
+    #navbar > nav {
+        width: 60%;
+    }
+
+    #navbar .icon {
+        margin-right: 0.5em;
+        vertical-align: sub;
+    }
+
+    #navbar a > .textLink {
+        display: inline;
+    }
 }
