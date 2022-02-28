@@ -1,5 +1,5 @@
 import { Component, ReactNode } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, RequireAuth } from "react-auth-kit";
 
 import './App.css';
@@ -8,7 +8,7 @@ import Home from './pages/home/Home';
 import Layout from './pages/Layout';
 import NoPage from './pages/noPage/NoPage';
 import { refreshApi } from './services/refreshApi';
-import Connection from './pages/connection/Connection';
+import Login from './pages/login/Login';
 
 export default class App extends Component {
     render(): ReactNode {
@@ -21,7 +21,7 @@ export default class App extends Component {
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={
-                            <RequireAuth loginPath="/connection">
+                            <RequireAuth loginPath="/login">
                                 <Layout />
                             </RequireAuth>
                         }>
@@ -30,7 +30,8 @@ export default class App extends Component {
                             <Route path="bookings/" element={<NoPage placeholder='bookings'/>} />
                             <Route path="profile/" element={<NoPage placeholder='profile'/>} />
                         </Route>
-                        <Route path='/connection' element={<Connection />}/>
+                        <Route path='*' element = {<Navigate to={'/'}/>} />
+                        <Route path='/login' element={<Login />}/>
                     </Routes>
                 </BrowserRouter>
             </AuthProvider>

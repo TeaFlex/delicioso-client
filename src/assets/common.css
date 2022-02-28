@@ -1,5 +1,20 @@
-.center {
+.center, .center-window {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
+}
+
+.center-window {
+    align-items: center;
+}
+
+.full-h {
+    height: 100vh;
+}
+
+.block {
+    background-color: var(--bright-main);
+    border-radius: 5px;
+    box-shadow: 0 0 5px black;
+    padding: 0.5em;
 }
