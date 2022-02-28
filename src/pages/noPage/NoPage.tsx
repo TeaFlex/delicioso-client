@@ -1,4 +1,5 @@
 import { Component, ReactNode } from "react";
+import './NoPage.css';
 
 interface NoPageProps {
     placeholder?: string;
