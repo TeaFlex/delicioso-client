@@ -14,15 +14,17 @@ export const refreshApi = createRefresh({
           const {data} = await axios.post('/api/v1/token',
             {
               refresh: refreshToken,
-              // oldAuthToken: authToken,
+              oldAuthToken: authToken,
             }
           );
           return {
             isSuccess: true,
             newAuthToken: data.access,
-            // newAuthTokenExpireIn: data.newAuthTokenExpireIn
+            newAuthTokenExpireIn: data.newAuthTokenExpireIn
           }
         } catch (error) {
+          console.log("e");
+          
           console.error(error);
           return {
             isSuccess: false,

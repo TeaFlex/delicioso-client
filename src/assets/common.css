@@ -4,6 +4,29 @@
     justify-content: center;
 }
 
+.flex {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.error {
+    color: red;
+}
+
+button, input[type='submit'] {
+    border-radius: 5px;
+    background-color: var(--second-color);
+    color: var(--bright-main);
+    border: 0;
+    padding: 0.7em;
+}
+
+button:hover, input[type='submit']:hover {
+    cursor: pointer;
+    background-color: var(--light-second);
+    transition: background-color 0.5s;
+}
+
 .center-window {
     align-items: center;
 }

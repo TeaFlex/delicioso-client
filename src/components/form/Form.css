@@ -1,0 +1,24 @@
+.formComponent {
+    width: 90%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+.formComponent input {
+    margin-bottom: 1em;
+}
+
+.formComponent h1 {
+    align-self: center;
+}
+
+.formComponent #buttonsArea {
+    justify-content: space-around;
+}
+
+@media (min-width: 640px) {
+    .formComponent {
+        width: 30%;
+    }
+}
