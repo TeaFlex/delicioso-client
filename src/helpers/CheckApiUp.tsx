@@ -8,7 +8,7 @@ const checkApiUp = (props: PropsWithChildren<CheckApiUpProps>): JSX.Element => {
     const [isUp, setIsUp] = useState(false);
 
     const retry = () => {
-        requestApiWithoutToken('')
+        requestApiWithoutToken('/')
             .then(v => {
                 setIsUp(v.status === 200);
             })
