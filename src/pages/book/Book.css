@@ -1,0 +1,9 @@
+#book .formComponent {
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    #book .formComponent {
+        width: 30%;
+    }
+}

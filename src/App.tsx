@@ -6,11 +6,12 @@ import './App.css';
 
 import Home from './pages/home/Home';
 import Layout from './pages/Layout';
-import NoPage from './pages/noPage/NoPage';
 import { refreshApi } from './services/refreshApi';
 import Login from './pages/login/Login';
 import Profile from './pages/profile/Profile';
 import CheckApiUp from './helpers/CheckApiUp';
+import Book from './pages/book/Book';
+import Bookings from './pages/bookings/Bookings';
 
 export default class App extends Component {
     render(): ReactNode {
@@ -29,8 +30,8 @@ export default class App extends Component {
                                 </RequireAuth>
                             }>
                                 <Route index element={<Home />} />
-                                <Route path="book/" element={<NoPage placeholder='book'/>} />
-                                <Route path="bookings/" element={<NoPage placeholder='bookings'/>} />
+                                <Route path="book/" element={<Book />} />
+                                <Route path="bookings/" element={<Bookings />} />
                                 <Route path="profile/" element={<Profile />} />
                             </Route>
                             <Route path='*' element = {<Navigate to={'/'}/>} />
