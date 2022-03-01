@@ -1,5 +1,5 @@
 import { Component, ReactNode } from "react";
-import TablesInfos from "../../helpers/getTablesInfo";
+import TablesInfos from "../../services/TablesInfos";
 import './Home.css';
 
 interface HomeState {

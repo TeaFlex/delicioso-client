@@ -1,5 +1,5 @@
-import { TableI } from "../services/interfaces";
-import requestApi from "../services/request";
+import { TableI } from "./interfaces";
+import requestApi from "./request";
 
 export default class TablesInfos {
     static async getAvailable() {
