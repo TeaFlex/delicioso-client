@@ -6,6 +6,11 @@ export interface UserI {
     [key: string]: any;
 }
 
+export interface TableI {
+    id: number;
+    seats: number;
+}
+
 export type ErrorPayload = {[key: string]: string[]};
 
 export interface LoginRequest {

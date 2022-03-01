@@ -9,6 +9,11 @@
     flex-flow: row nowrap;
 }
 
+.flex-col {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
 .error {
     color: red;
 }

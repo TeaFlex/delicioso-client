@@ -10,32 +10,35 @@ import NoPage from './pages/noPage/NoPage';
 import { refreshApi } from './services/refreshApi';
 import Login from './pages/login/Login';
 import Profile from './pages/profile/Profile';
+import CheckApiUp from './helpers/CheckApiUp';
 
 export default class App extends Component {
     render(): ReactNode {
         return (
-            <AuthProvider 
-                authType={'localstorage'} 
-                authName={'_auth'} 
-                refresh={refreshApi}
-                >
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={
-                            <RequireAuth loginPath="/login">
-                                <Layout />
-                            </RequireAuth>
-                        }>
-                            <Route index element={<Home />} />
-                            <Route path="book/" element={<NoPage placeholder='book'/>} />
-                            <Route path="bookings/" element={<NoPage placeholder='bookings'/>} />
-                            <Route path="profile/" element={<Profile />} />
-                        </Route>
-                        <Route path='*' element = {<Navigate to={'/'}/>} />
-                        <Route path='/login' element={<Login />}/>
-                    </Routes>
-                </BrowserRouter>
-            </AuthProvider>
+            <CheckApiUp>
+                <AuthProvider 
+                    authType={'localstorage'} 
+                    authName={'_auth'} 
+                    refresh={refreshApi}
+                    >
+                    <BrowserRouter>
+                        <Routes>
+                            <Route path="/" element={
+                                <RequireAuth loginPath="/login">
+                                    <Layout />
+                                </RequireAuth>
+                            }>
+                                <Route index element={<Home />} />
+                                <Route path="book/" element={<NoPage placeholder='book'/>} />
+                                <Route path="bookings/" element={<NoPage placeholder='bookings'/>} />
+                                <Route path="profile/" element={<Profile />} />
+                            </Route>
+                            <Route path='*' element = {<Navigate to={'/'}/>} />
+                            <Route path='/login' element={<Login />}/>
+                        </Routes>
+                    </BrowserRouter>
+                </AuthProvider>
+            </CheckApiUp>
         )
     }
 }

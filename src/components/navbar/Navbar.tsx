@@ -35,7 +35,12 @@ export default class Navbar extends Component {
         },
     ];
 
-    public state: NavBarState = this.pages[0];
+    public state: NavBarState = this.pages.find(v => {
+        let p = window.location.pathname;
+        if(p !== "/")
+            p = p.substring(1);
+        return v.path == p;
+    }) ?? this.pages[0];
     
     render(): ReactNode {
         
