@@ -3,5 +3,12 @@
     width: 90%;
     margin: auto;
     padding-top: 1em;
+    padding-bottom: 4em;
     /* min-height: 130vh; */
+}
+
+@media (min-width: 640px) {
+    #content {
+        padding-bottom: 1em;
+    }
 }

@@ -10,6 +10,8 @@ const Profile = (props: ProfileProps): JSX.Element => {
     const disconnect = useSignOut();
     
     const user = auth() as UserI;
+
+    const date = new Date(user.last_login).toLocaleString();
     
     return (
         <>
@@ -17,7 +19,7 @@ const Profile = (props: ProfileProps): JSX.Element => {
                 <div>
                     <h2>{user.username} profile</h2>
                     <ul>
-                        <li>Last login: {user.last_login ?? "no data"}</li>
+                        <li>Last login: {(user.last_login)? date : "no data"}</li>
                         <li>Staff member: {(user.is_staff)? "Yes": "No"}</li>
                         <li>User id: {user.id}</li>
                     </ul>
