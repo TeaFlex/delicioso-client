@@ -8,20 +8,26 @@ import './Login.css';
 
 interface LoginProps {}
 
+type ErrorState = {[key: string]: string[]};
+
+interface LoginState {
+    username?: string;
+    password?: string;
+}
+
 const Login = (props: LoginProps): JSX.Element => {
     
-    const [errors, setErrors] = useState<{[key: string]: string[]} | undefined>();
+    const [errors, setErrors] = useState<ErrorState>();
+    const [login, setLogin] = useState<LoginState>({
+        username: "",
+        password: "",
+    });
     const navigate = useNavigate();
     const signIn = useSignIn();
 
-    let form = {
-        username: "",
-        password: "",
-    };
-
     const loginHandler = async () => {
         try {
-            const res = await axios.post(api_auth, form);
+            const res = await axios.post(api_auth, login);
             
             setErrors(undefined);
             
@@ -43,7 +49,7 @@ const Login = (props: LoginProps): JSX.Element => {
     const fieldHandler = (e: any) => {
         const o: any = {};
         o[e.target.name] = (e.target.value as string).trim();
-        form = {...form, ...o};
+        setLogin({...login, ...o});
     };
 
     return (
