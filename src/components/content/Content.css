@@ -5,7 +5,3 @@
     padding-top: 1em;
     /* min-height: 130vh; */
 }
-
-#content>* {
-    background-color: var(--bright-main);
-}

@@ -1,4 +1,5 @@
 import { Component, ReactNode, FormEvent, Children, cloneElement } from "react";
+import { ErrorPayload } from "../../services/interfaces";
 import './Form.css';
 
 interface FormProps {
@@ -6,7 +7,7 @@ interface FormProps {
     onSubmit?: (...args: any) => any
     submitText?: string;
     preventDefault?: boolean;
-    errors?: {[key: string]: string[]};
+    errors?: ErrorPayload;
 }
 
 interface FormFields {

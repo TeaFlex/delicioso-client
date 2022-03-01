@@ -1,24 +1,20 @@
 import axios, { AxiosError } from "axios";
 import { useState } from "react";
 import { useSignIn } from "react-auth-kit";
+import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import Form from "../../components/form/Form";
 import { api_auth, refresh_token_expiration, token_expiration } from "../../config";
+import { ErrorPayload, LoginRequest } from "../../services/interfaces";
 import './Login.css';
+
 
 interface LoginProps {}
 
-type ErrorState = {[key: string]: string[]};
-
-interface LoginState {
-    username?: string;
-    password?: string;
-}
-
 const Login = (props: LoginProps): JSX.Element => {
     
-    const [errors, setErrors] = useState<ErrorState>();
-    const [login, setLogin] = useState<LoginState>({
+    const [errors, setErrors] = useState<ErrorPayload>();
+    const [login, setLogin] = useState<LoginRequest>({
         username: "",
         password: "",
     });
@@ -30,6 +26,8 @@ const Login = (props: LoginProps): JSX.Element => {
             const res = await axios.post(api_auth, login);
             
             setErrors(undefined);
+
+            const payload = jwt_decode(res.data.access) as any;
             
             const auth = signIn({
                 token: res.data.access,
@@ -37,8 +35,11 @@ const Login = (props: LoginProps): JSX.Element => {
                 refreshToken: res.data.refresh,
                 refreshTokenExpireIn: refresh_token_expiration,
                 expiresIn: token_expiration,
+                authState: payload.auth_user
             });
-            navigate('/');
+
+            if(auth)
+                navigate('/');
             
         } catch (error) {
             const res = (error as AxiosError).response;
