@@ -24,7 +24,7 @@ export default class Form extends Component<FormProps, FormFields> {
 
     render(): ReactNode {
         return (
-            <form className="block formComponent">
+            <form className="formComponent">
                 {!!this.props.title && 
                     <h1>{this.props.title}</h1>
                 }

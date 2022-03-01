@@ -1,5 +1,4 @@
 .formComponent {
-    width: 90%;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -15,10 +14,4 @@
 
 .formComponent #buttonsArea {
     justify-content: space-around;
-}
-
-@media (min-width: 640px) {
-    .formComponent {
-        width: 30%;
-    }
 }

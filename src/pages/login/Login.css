@@ -1,0 +1,9 @@
+#connection .block {
+    width: 90%;
+}
+
+@media (min-width: 640px) {
+    #connection .block {
+        width: 30%;
+    }
+}

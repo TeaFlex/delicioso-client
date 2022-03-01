@@ -55,17 +55,19 @@ const Login = (props: LoginProps): JSX.Element => {
 
     return (
         <div className="center-window full-h" id="connection">
-            <Form 
-                title="Login" 
-                onSubmit={loginHandler} 
-                preventDefault={true}
-                errors={errors}
-            >
-                <label htmlFor="username">Username:</label>
-                <input type="text" name="username" onChange={fieldHandler}/>
-                <label htmlFor="password">Password:</label>
-                <input type="password" name="password" onChange={fieldHandler}/>
-            </Form>
+            <div className="block">
+                <Form
+                    title="Login" 
+                    onSubmit={loginHandler} 
+                    preventDefault={true}
+                    errors={errors}
+                >
+                    <label htmlFor="username">Username:</label>
+                    <input type="text" name="username" onChange={fieldHandler}/>
+                    <label htmlFor="password">Password:</label>
+                    <input type="password" name="password" onChange={fieldHandler}/>
+                </Form>
+            </div>
         </div>
     );
 };
