@@ -7,7 +7,7 @@ export default class TablesInfos {
     }
 
     static async getTotalSeats() {
-        return (await requestApi('table/seats', 'GET')).data as {count: number};
+        return (await requestApi('table/seats', 'GET')).data as {total_seats: number};
     }
 
     static async getCount() {

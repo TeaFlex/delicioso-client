@@ -1,4 +1,4 @@
-import { Component, ReactNode } from "react";
+import { useEffect, useState } from "react";
 import { TableI } from "../../services/interfaces";
 import TablesInfos from "../../services/TablesInfos";
 import './Home.css';
@@ -6,37 +6,40 @@ import './Home.css';
 interface HomeState {
     [key: string]: any
 }
-export default class Home extends Component<{}, HomeState> {
 
-    state: HomeState = {};
+const Home = (): JSX.Element => {
+    const [state, setState] = useState<HomeState>({});
 
-    componentDidMount() {
-        TablesInfos.getCount()
-        .then(v => {
-            this.setState(v)
-        });
-
-        TablesInfos.getAvailable()
-        .then(v => {
-            this.setState({
-                available: v,
-                available_count: v.length,
-                ...this.state
+    useEffect(() => {
+        (async () => {
+            const a = await TablesInfos.getAvailable();
+            const c = await TablesInfos.getCount();
+            const s = await TablesInfos.getTotalSeats();
+            setState({
+                ...state, 
+                available: a, 
+                available_count: a.length, 
+                ...c,
+                ...s,
             });
-        })
-    }
 
-    render(): ReactNode {
-        return (
-            <>
-                <div className="block">
-                    <h2>Welcome !</h2>
-                    {"Available tables: " +(this.state.available_count ?? -1)  + "/" + (this.state.count ?? -1) }
-                </div>
-                <div className="flex">
-                    {/* {(this.state.available as TableI[]).map(v => <div className="block">{v.id}</div>)} */}
-                </div>
-            </>
-        )
-    }
-}
+        })();
+    },[]);
+
+    console.log(state);
+    
+
+    return (
+        <>
+            <div className="block">
+                <h2>Welcome !</h2>
+                {"Available tables: " +(state.available_count ?? -1)  + "/" + (state.count ?? -1) }
+            </div>
+            <div className="flex">
+                {/* {(state.available as TableI[]).map((v, i) => <div className="block" key={i}>{v.id}</div>)} */}
+            </div>
+        </>
+    )
+};
+
+export default Home;
