@@ -1,4 +1,5 @@
 import { Component, ReactNode } from "react";
+import { TableI } from "../../services/interfaces";
 import TablesInfos from "../../services/TablesInfos";
 import './Home.css';
 
@@ -27,10 +28,15 @@ export default class Home extends Component<{}, HomeState> {
 
     render(): ReactNode {
         return (
-            <div className="block">
-                <h2>Welcome !</h2>
-                {"Available tables: "+(this.state.count ?? -1)+"/"+this.state.available_count ?? -1}
-            </div>
+            <>
+                <div className="block">
+                    <h2>Welcome !</h2>
+                    {"Available tables: " +(this.state.available_count ?? -1)  + "/" + (this.state.count ?? -1) }
+                </div>
+                <div className="flex">
+                    {/* {(this.state.available as TableI[]).map(v => <div className="block">{v.id}</div>)} */}
+                </div>
+            </>
         )
     }
 }

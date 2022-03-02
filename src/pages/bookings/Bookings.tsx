@@ -1,5 +1,9 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAuthUser } from "react-auth-kit";
+import { useNavigate } from "react-router-dom";
+import urljoin from "url-join";
+import { api_url } from "../../config";
 import BookingsInfos from "../../services/BookingsInfos";
 import { BookingsPayload, UserI } from "../../services/interfaces";
 import './Bookings.css';
@@ -10,6 +14,7 @@ const Bookings = (props: BookingsProps): JSX.Element => {
 
     const auth = useAuthUser();
     const user = auth() as UserI;
+    const navigate = useNavigate();
 
     const [bookings, setBookings] = useState<BookingsPayload[]>([]);
     const [oldBookings, setOldBookings] = useState<BookingsPayload[]>([]);
@@ -21,7 +26,16 @@ const Bookings = (props: BookingsProps): JSX.Element => {
             const o = await BookingsInfos.getAllBookings();
             setOldBookings(o);
         })();
-    }, []);
+    },[]);
+
+    const cancelBooking = async (id: number) => {
+        try {
+            const res = await BookingsInfos.cancelBooking(id);
+            navigate('/');
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     return (
         <>
@@ -37,7 +51,7 @@ const Bookings = (props: BookingsProps): JSX.Element => {
                                 <li>Booked at: {new Date(v.booked_at!).toLocaleString()}</li>
                                 <li>{v.booked_table?.length} table(s) used.</li>
                             </ul>
-                            <button>Cancel</button>
+                            <button onClick={() => cancelBooking(v.id!)}>Cancel</button>
                         </div>
                     )
                 })}
