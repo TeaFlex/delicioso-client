@@ -1,6 +1,6 @@
 # Delicioso client
 
-Client for (delicioso-api)[https://github.com/TeaFlex/delicioso-api].
+Client for [delicioso-api](https://github.com/TeaFlex/delicioso-api).
 
 ## Start development project
 
